@@ -16,23 +16,27 @@ int main() {
 
     int happy = 0;
     for (int i = 0; i < n; i++) {
+        int prev = 0;
         int cnt = 0;
-        for (int j = 1; j < n; j++) {
-            if (grid[i][j-1] == grid[i][j]) cnt++;
+        for (int j = 0; j < n; j++) {
+            if (prev == grid[i][j]) cnt++;
             if (cnt >= m-1) {
                 happy++;
                 break;
             }
+            prev = grid[i][j];
         }
     }
     for (int i = 0; i < n; i++) {
+        int prev = 0;
         int cnt = 0;
-        for (int j = 1; j < n; j++) {
-            if (grid[j-1][i] == grid[j][i]) cnt++;
+        for (int j = 0; j < n; j++) {
+            if (prev == grid[j][i]) cnt++;
             if (cnt >= m-1) {
                 happy++;
                 break;
             }
+            prev = grid[j][i];
         }
     }
 
