@@ -19,13 +19,13 @@ int main() {
     // 시작점
     for (int i=0; i<n; i++){
         for (int j=0; j<m; j++){
-            if (grid[i][j] <0) continue;
+            if (grid[i][j] <= 0) continue;
             // 끝점
             int last = m;
             for(int k=i; k<n; k++){
-                if (grid[k][0] < 0) break;
+                if (grid[k][0] <= 0) break;
                 for (int l=j; l<last; l++){
-                    if (grid[k][l] < 0) {
+                    if (grid[k][l] <= 0) {
                         last = l;
                         break;
                     }
