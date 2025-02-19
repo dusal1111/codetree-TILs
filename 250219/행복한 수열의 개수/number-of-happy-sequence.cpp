@@ -15,7 +15,6 @@ int main() {
     }
 
     int happy = 0;
-    // Write your code here!
     for (int i = 0; i < n; i++) {
         int cnt = 0;
         for (int j = 1; j < n; j++) {
