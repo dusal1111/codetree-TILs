@@ -20,6 +20,7 @@ int main() {
         int cnt = 0;
         for (int j = 0; j < n; j++) {
             if (prev == grid[i][j]) cnt++;
+            else cnt = 0;
             if (cnt >= m-1) {
                 happy++;
                 break;
@@ -32,6 +33,7 @@ int main() {
         int cnt = 0;
         for (int j = 0; j < n; j++) {
             if (prev == grid[j][i]) cnt++;
+            else cnt = 0;
             if (cnt >= m-1) {
                 happy++;
                 break;
