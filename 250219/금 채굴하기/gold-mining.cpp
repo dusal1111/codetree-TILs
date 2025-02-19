@@ -1,5 +1,6 @@
 #include <iostream>
 #include <math.h>
+#include <algorithm>
 
 using namespace std;
 
@@ -9,23 +10,17 @@ int grid[20][20];
 int mine(int y, int x, int k) {
     int gain = 0;
 
-    int move = k;
-    for(int i=y; i >= y-k; i--){
-        for(int j=x-move; j<=x+move; j++){
-            if (i < n && j < n && grid[i][j]==1){
-                gain++;
+    for (int dy = -k; dy <= k; dy++) {
+        int row = y + dy;
+        if (row >= 0 && row < n) {
+            int width = k - abs(dy);
+            for (int dx = -width; dx <= width; ++dx) {
+                int col = x + dx;
+                if (col >= 0 && col < n) {
+                    gain += grid[row][col];
+                }
             }
         }
-        move--;
-    }
-    move = k-1;
-    for(int i=y+1; i<= y+k; i++){
-        for(int j=x-move; j<=x+move; j++){
-            if (i < n && j < n && grid[i][j]==1){
-                gain++;
-            }
-        }
-        move--;
     }
 
     return gain;
@@ -42,17 +37,17 @@ int main() {
         }
     }
 
-    // Write your code here!
-    int max = 0;
-    for (int k=0; pow(k, 2) + pow(k+1, 2) <= total * m; k++){
+    int max_gold = 0;
+    for (int k = 0; k <= 2*(n-1) ; k++) {
+        int cost = pow(k, 2) + pow(k + 1, 2);
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
-                int gain = mine(i,j,k);
-                if (pow(k, 2) + pow(k+1, 2)<= gain*m && max < gain) max = gain;
+                int gain = mine(i, j, k);
+                if (cost <= gain * m) max_gold = max(max_gold, gain);
             }
         }
     }
-    
-    cout << max;
+
+    cout << max_gold;
     return 0;
 }
