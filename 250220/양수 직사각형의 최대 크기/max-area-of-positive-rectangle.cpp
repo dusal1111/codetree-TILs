@@ -23,7 +23,7 @@ int main() {
             // 끝점
             int last = m;
             for(int k=i; k<n; k++){
-                if (grid[k][0] <= 0) break;
+                if (grid[k][j] <= 0) break;
                 for (int l=j; l<last; l++){
                     if (grid[k][l] <= 0) {
                         last = l;
